@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1567711991 source:c:\users\perzeus\desktop\code blocks proyectos\t.p. calculadora\main.c
+	"Operaciones.h"
+	<stdlib.h>
+	<windows.h>
+
+1567708816 c:\users\perzeus\desktop\code blocks proyectos\t.p. calculadora\operaciones.h
+	<stdio.h>
+
+1567708816 source:c:\users\perzeus\desktop\code blocks proyectos\t.p. calculadora\operaciones.c
+	"Operaciones.h"
+
