@@ -111,7 +111,7 @@ void printEmployee(Employee employeeArray[], int len)
         if (employeeArray[i].isEmpty == 0) {
             printf("------------------------------------------------------------\n");
             printf("ID   |   NOMBRE   |   APELLIDO   |   SALARIO   |   SECTOR\n");
-            printf("*%d  | %s       | %s         | 2.%f     | %d *\n", employeeArray[i].id,employeeArray[i].name, employeeArray[i].lastName,employeeArray[i].salary, employeeArray[i].sector);
+            printf("*%d  | %s       | %s         | %2.f     | %d *\n", employeeArray[i].id,employeeArray[i].name, employeeArray[i].lastName,employeeArray[i].salary, employeeArray[i].sector);
             printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
         }
     }
@@ -139,8 +139,8 @@ int menuInformar()
 
 /**
  * String getter
- * @param mensaje *msg pointer to array of chars
- * @param input *input pointer to array of chars
+ * param mensaje *msg pointer to array of chars
+ * param input *input pointer to array of chars
  */
 void getString(char input[], char msg[]) {
     fflush(stdin);
@@ -151,14 +151,14 @@ void getString(char input[], char msg[]) {
 
 
 /**
- * Gets int
- * @param pInt *pInt pointer to int variable.
- * @param msg msg* Pointer to array of chars
- * @param msgError msgError* Pointer to array of chars
- * @param min int minimum of number to enter
- * @param max int maximum of number to enter
- * @param retries int amount of retries user has
- * @return int returns (-1) if Error [Not between min and max or not number] - (0) if OK
+ * \brief Gets int
+ * \param pInt *pInt pointer to int variable.
+ * \param msg msg* Pointer to array of chars
+ * \param msg Error msg Error* Pointer to array of chars
+ * \param min int minimum of number to enter
+ * \param max int maximum of number to enter
+ * param retries int amount of retries user has
+ * return int returns (-1) if Error [Not between min and max or not number] - (0) if OK
  *
  */
 int getInt(int *pInt, char msg[], char msgError[], int min, int max, int retries) {
@@ -187,6 +187,8 @@ int getInt(int *pInt, char msg[], char msgError[], int min, int max, int retries
 
 
 }
+
+
 int validarMenu(int menu, int min, int max) {
     if (menu >= min && menu <= max) {
         return 1;
@@ -204,7 +206,7 @@ int getStringLettersOnly(char *input, char *msg, int len, int retries) {
             return 1;
         } else {
             retries--;
-            printf("Error nombre deben ser solo letras y no puede estar vacio!.\n");
+            printf("El nombre debe ser solo letras y no puede estar vacio.\n");
         }
 
     } while (retries >= 0);
@@ -224,7 +226,7 @@ int getFreeSpace(Employee employeeArray[], int len) {
             {
                 system("cls");
                 retorno = -1;
-    printf("No hay espacio en el array para agregar mas empleados.\n");
+                printf("No hay espacio en el array para agregar mas empleados.\n");
             }
     }
     return retorno;
@@ -260,9 +262,9 @@ int getFloat(float *pFloat, char msg[], char msgError[], float min, float max, i
 }
 
 /**
- * Checks if it is a letter(includes space)
- * @param c c* Pointer to array of chars
- * @return int return 1 if its a letter or 0 if it is there a space or enter in the first element or if it is not a letter
+ * \brief Checks if it is a letter(includes space)
+ * \param c c* Pointer to array of chars
+ * \return int return 1 if its a letter or 0 if it is there a space or enter in the first element or if it is not a letter
  */
 int isLetter(char c[]) {
     int i = 0;
@@ -277,54 +279,61 @@ int isLetter(char c[]) {
 }
 
 /**
- * Gets total of all salaries
- * @param employee *eEmployee pointer to array of structs of type eEmployee
- * @param len int size of array
- * @return int total of salaries
+ * \brief Gets total of all salaries
+ * \param employee *eEmployee pointer to array of structs of type eEmployee
+ * \param len int size of array
+ * \return int total of salaries
  */
 float getAllSalaries(Employee employeeArray[] , int len) {
     float salaries = 0;
     int i;
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < len; i++)
+        {
         if (employeeArray[i].isEmpty == 0)
-            salaries += employeeArray[i].salary;
+            {
+                salaries += employeeArray[i].salary;
+            }
 
-    }
+        }
     return salaries;
 }
 /**
- * Gets average salaries of employees
- * @param employee *eEmployee pointer to array of structs of type eEmployee
- * @param len int size of array
- * @return int average of all salaries in array of employees
+ *  \brief Gets average salaries of employees
+ *\param employee *eEmployee pointer to array of structs of type eEmployee
+ * \param len int size of array
+ * \return int average of all salaries in array of employees
  */
-int getAverageSalaries(Employee employee_Array[], int len) {
+int getAverageSalaries(Employee employee_Array[], int len)
+    {
     int i, averageSalaries = 0, rangeOfNotEmptyEmployees = 0;
-    for (i = 0; i < len; i++) {
-        if (employee_Array[i].isEmpty == 0) {
-            averageSalaries += employee_Array[i].salary;
-            rangeOfNotEmptyEmployees++;
+    for (i = 0; i < len; i++)
+        {
+        if (employee_Array[i].isEmpty == 0)
+            {
+                averageSalaries += employee_Array[i].salary;
+                rangeOfNotEmptyEmployees++;
+            }
         }
-    }
     return averageSalaries / rangeOfNotEmptyEmployees;
 }
 /**
- * Gets the employees that are above average salary
- * @param employee *eEmployee pointer to array of structs of type eEmployee
- * @param len int size of array
- * @return int returns employees that are above average salary
+ * \brief Gets the employees that are above average salary
+ * \param employee *eEmployee pointer to array of structs of type eEmployee
+ * \param len int size of array
+ * \return int returns employees that are above average salary
  */
 int employeesAboveAverage(Employee employeeArray[], int len) {
     int getAverageSalary = getAverageSalaries(employeeArray, len);
     int i, employessAboveAverage = 0;
-    for (i = 0; i < len; i++) {
-        if (employeeArray[i].isEmpty == 0 && employeeArray[i].salary > getAverageSalary) {
-            employessAboveAverage++;
+    for (i = 0; i < len; i++)
+        {
+            if (employeeArray[i].isEmpty == 0 && employeeArray[i].salary > getAverageSalary)
+                {
+                    employessAboveAverage++;
 
+                }
         }
-    }
     return employessAboveAverage;
-
 }
 
 /** \brief Sort the elements in the array of employees, the argument order
@@ -412,23 +421,27 @@ void sortBySectorLastNameAndName(Employee employeeArray[] , int len, int order) 
 }
 
 /**
- * Turns to upper every single letter of name and last name.
- * @param employee eEmployee* Pointer to array of employees
- * @param len int size of array
+ * \brief Turns to upper every single letter of name and last name.
+ * \param employee eEmployee* Pointer to array of employees
+ * \param len int size of array
  */
 void toUpperLastNameAndName(Employee employeeArray[], int len) {
     int i;
     int j;
-    for (i = 0; i < len; i++) {
-        for (j = 0; j < strlen(employeeArray[i].lastName); ++j) {
-            employeeArray[i].lastName[j] = toupper(employeeArray[i].lastName[j]);
-        }
-    }
-    for (i = 0; i < len; i++) {
-        for (j = 0; j < strlen(employeeArray[i].name); ++j) {
-            employeeArray[i].name[j] = toupper(employeeArray[i].name[j]);
-        }
-    }
+        for (i = 0; i < len; i++)
+            {
+                for (j = 0; j < strlen(employeeArray[i].lastName); ++j)
+                {
+                    employeeArray[i].lastName[j] = toupper(employeeArray[i].lastName[j]);
+                }
+            }
+            for (i = 0; i < len; i++)
+                {
+                    for (j = 0; j < strlen(employeeArray[i].name); ++j)
+                        {
+                            employeeArray[i].name[j] = toupper(employeeArray[i].name[j]);
+                        }
+                }
 }
 
 /** \brief find an Employee by Id en returns the index position in array.
@@ -442,42 +455,46 @@ pointer received or employee not found]
 */
 int findEmployeeById(Employee employeeArray[], int len, int id) {
     int i;
-    for (i = 0; i < len; i++) {
-        if (id == employeeArray[i].id) {
-            return i;
-
-        }
-    }
-    printf("No hay empleados con el ID:%d en el array.\n", id);
+        for (i = 0; i < len; i++)
+            {
+                if (id == employeeArray[i].id)
+                {
+                return i;
+                }
+            }
+    printf("No se encontraron empleados con ID %d.\n", id);
     return -1;
 }
 
 /**
- * Modifies employee selected by the id
- * @param employee_Array pointer to array of structs of type eEmployee
- * @param len int size of array
- * @param id int id of employee
- * @param name *name pointer to array of chars
- * @param lastName *lastName pointer to array of chars
- * @param salary int salary of employee
- * @param sector int sector of employee
- * @return returns 0 if employee was deleted -1 if operation was cancelled
+ * \brief Modifies employee selected by the id
+ * \param employee_Array pointer to array of structs of type eEmployee
+ * \param len int size of array
+ * \param id int id of employee
+ * \param name *name pointer to array of chars
+ * \param lastName *lastName pointer to array of chars
+ * \param salary int salary of employee
+ * \param sector int sector of employee
+ * \return returns 0 if employee was deleted -1 if operation was cancelled
  */
 int modifyEmployee(Employee employeeArray[], int len, int id, char name[], char lastName[], float salary, int sector) {
     int i;
-    for (i = 0; i < len; ++i) {
-        if (employeeArray[i].id == id && employeeArray[i].isEmpty == 0) {
-            employeeArray[i].isEmpty = 0;
-            employeeArray[i].id = id;
-            strcpy(employeeArray[i].name, name);
-            strcpy(employeeArray[i].lastName, lastName);
-            employeeArray[i].salary = salary;
-            employeeArray[i].sector = sector;
-            printf("-------Operacion realizada ID %d fue modificado.\n", employeeArray[i].id);
-            return 0;
-        }
-    }
-    printf("Operacion cancelada, no se pudo modificar al empleado.\n");
+        for (i = 0; i < len; ++i)
+            {
+                if (employeeArray[i].id == id && employeeArray[i].isEmpty == 0)
+                    {
+                    employeeArray[i].isEmpty = 0;
+                    employeeArray[i].id = id;
+                    strcpy(employeeArray[i].name, name);
+                    strcpy(employeeArray[i].lastName, lastName);
+                    employeeArray[i].salary = salary;
+                    employeeArray[i].sector = sector;
+
+                    printf("Se ha completado su operacios, su ID %d fue modificado.\n", employeeArray[i].id);
+                    return 0;
+                    }
+            }
+        printf("Fallo en la operacion, no se pudo modificar al empleado.\n");
     return -1;
 }
 
@@ -496,24 +513,29 @@ int removeEmployee(Employee employeeArray[] , int len, int id) {
     printf("Esta seguro que desea eliminar el registro (Y/N): \n");
     getC(&tempChar);
     tempChar = toupper(tempChar);
-    if (tempChar == 'Y') {
-        for (i = 0; i < len; i++) {
-            if (id == employeeArray[i].id) {
-                employeeArray[i].isEmpty = 1;
+        if (tempChar == 'Y')
+            {
+            for (i = 0; i < len; i++)
+                {
+                    if (id == employeeArray[i].id)
+                        {
+                        employeeArray[i].isEmpty = 1;
+                        returnNum = 0;
+                        return returnNum;
+                        }
+                    returnNum = -1;
+                }
+        if (returnNum != 0)
+            {
+                printf("Registro no encontrado");
                 returnNum = 0;
                 return returnNum;
             }
-            returnNum = -1;
+    } else
+        {
+            system("cls");
+            printf("Operacion cancelada-\n");
         }
-        if (returnNum != 0) {
-            printf("Registro no encontrado");
-            returnNum = 0;
-            return returnNum;
-        }
-    } else {
-        system("cls");
-        printf("Operacion cancelada-\n");
-    }
-        return returnNum;
+    return returnNum;
 
 }
