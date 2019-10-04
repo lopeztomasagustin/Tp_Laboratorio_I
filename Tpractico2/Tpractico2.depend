@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1570230562 source:c:\users\perzeus\desktop\code blocks proyectos\tpractico2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	<math.h>
+	"ArrayEmployees.h"
+
+1570230596 c:\users\perzeus\desktop\code blocks proyectos\tpractico2\arrayemployees.h
+	<stdio.h>
+	<ctype.h>
+	<stdlib.h>
+	<time.h>
+	<conio.h>
+	<string.h>
+	<math.h>
+
+1570229771 source:c:\users\perzeus\desktop\code blocks proyectos\tpractico2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	<math.h>
+	"ArrayEmployees.h"
+
